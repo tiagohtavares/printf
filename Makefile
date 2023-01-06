@@ -1,8 +1,8 @@
-LIBFT = ./libft/libft.a
-
 NAME = libftprintf.a
 
-SRCS =  ft_printf.c main.c
+SRCS =  ft_printf.c ft_putchar.c ft_putnbr.c ft_putstr.c ft_strchr.c ft_strlen.c \
+		ft_itoa.c ft_itoa_unsigned.c ft_putnbr_unsigned.c ft_puthex_lower.c ft_puthex_upper.c \
+		ft_putptr.c
 
 CC	= cc
 RM	= rm -f
@@ -10,11 +10,10 @@ CFLAGS	= -Wall -Wextra -Werror -I.
 
 OBJS = $(SRCS:.c=.o)
 
-all:	$(NAME)
+all: $(NAME)
 
-$(NAME):	$(OBJS)
+$(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
-	$(CC) $(CFLAGS) -o test.o main.c $(NAME)
 
 clean:
 	$(RM) $(OBJS) $(BONUS_OBJS)
@@ -24,7 +23,4 @@ fclean:	clean
 
 re:	fclean $(NAME)
 
-bonus:	$(OBJS) $(BONUS_OBJS)
-	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
-
-.PHONY:	all clean fclean re bonus
+.PHONY:	all clean fclean re

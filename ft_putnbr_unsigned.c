@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_unsigned.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 16:28:24 by ttavares          #+#    #+#             */
-/*   Updated: 2022/11/21 16:42:23 by ttavares         ###   ########.fr       */
+/*   Created: 2022/12/05 14:38:48 by ttavares          #+#    #+#             */
+/*   Updated: 2022/12/05 16:50:31 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+int	ft_putnbr_unsigned(unsigned int n)
 {
-	char			*ptr;
-	unsigned int	i;
+	char	*str;
+	int		len;
 
-	i = 0;
-	if (!s || !f)
-		return (0);
-	ptr = ft_strdup(s);
-	if (!ptr)
-		return (0);
-	while (ptr[i])
-	{
-		ptr[i] = f(i, ptr[i]);
-		i++;
-	}
-	return (ptr);
+	str = ft_itoa_unsigned(n);
+	len = ft_putstr(str);
+	free(str);
+	return (len);
 }

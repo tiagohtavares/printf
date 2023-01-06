@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 12:16:39 by ttavares          #+#    #+#             */
-/*   Updated: 2022/11/21 16:40:41 by ttavares         ###   ########.fr       */
+/*   Created: 2022/12/05 12:37:17 by ttavares          #+#    #+#             */
+/*   Updated: 2022/12/05 16:50:20 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_isalpha(int c)
+int	ft_putnbr(int n)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1);
-	return (0);
+	char	*str;
+	int		len;
+
+	str = ft_itoa(n);
+	len = ft_putstr(str);
+	free(str);
+	return (len);
 }

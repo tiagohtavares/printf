@@ -1,22 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_puthex_lower.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 15:37:58 by ttavares          #+#    #+#             */
-/*   Updated: 2022/11/29 15:52:17 by ttavares         ###   ########.fr       */
+/*   Created: 2022/12/05 15:11:03 by ttavares          #+#    #+#             */
+/*   Updated: 2022/12/06 14:54:51 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	main (void)
+static void	ft_print_convert(unsigned int num)
 {
-	int	a;
+	if (num <= 9)
+		ft_putchar(num + '0');
+	else if (num >= 16)
+	{
+		ft_print_convert(num / 16);
+		ft_print_convert(num % 16);
+	}
+	else
+		ft_putchar(num - 10 + 'a');
+}
 
-	a = 5;
-	ft_printf("asd", a);
-	return (0);
+int	ft_puthex_lower(unsigned int num)
+{
+	int	total;
+
+	total = 0;
+	if (num == 0)
+	{
+		ft_putchar('0');
+		total++;
+	}
+	else
+		ft_print_convert(num);
+	while (num != 0)
+	{
+		num = num / 16;
+		total++;
+	}
+	return (total);
 }

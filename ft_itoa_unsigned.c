@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_itoa_unsigned.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttavares <ttavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 13:51:37 by ttavares          #+#    #+#             */
-/*   Updated: 2022/11/22 11:20:18 by ttavares         ###   ########.fr       */
+/*   Created: 2022/12/05 14:39:24 by ttavares          #+#    #+#             */
+/*   Updated: 2022/12/05 16:51:41 by ttavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "ft_printf.h"
 
-static int	ft_nbrsize(int n)
+static int	ft_nbrsize(unsigned int n)
 {
 	int	size;
 
 	size = 0;
-	if (n == -2147483648)
-		return (11);
-	if (n < 0)
-	{
-		n *= -1;
-		size++;
-	}
 	if (n == 0)
 		size++;
 	while (n > 0)
@@ -35,30 +27,18 @@ static int	ft_nbrsize(int n)
 	return (size);
 }
 
-static int	ft_nbrflip(int n)
+char	*ft_itoa_unsigned(unsigned int n)
 {
-	if (n == -2147483648)
-	{
-			n++;
-			n *= -1;
-	}
-	else if (n < 0)
-		n *= -1;
-	return (n);
-}
-
-char	*ft_itoa(int n)
-{
-	char	*ptr;
-	int		size;
-	int		nbr;
-	int		i;
+	char				*ptr;
+	unsigned int		size;
+	unsigned int		nbr;
+	unsigned int		i;
 
 	size = ft_nbrsize(n);
 	ptr = (char *)malloc(size + 1);
 	if (!ptr)
 		return (0);
-	nbr = ft_nbrflip(n);
+	nbr = n;
 	i = size - 1;
 	ptr[size] = '\0';
 	while (nbr > 0)
@@ -67,11 +47,7 @@ char	*ft_itoa(int n)
 		nbr /= 10;
 		i--;
 	}
-	if (n == -2147483648)
-		ptr[10] = '8';
 	if (n == 0)
 		ptr[0] = '0';
-	if (n < 0)
-		ptr[0] = '-';
 	return (ptr);
 }
