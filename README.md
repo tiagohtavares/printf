@@ -4,7 +4,7 @@
 
 ## About 
 
-This project consists of recreating printf.
+This project consists of recreating <a href="https://man7.org/linux/man-pages/man3/printf.3.html">printf</a>.
 
 ## Implementation
 
