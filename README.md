@@ -8,6 +8,8 @@ This project consists of recreating printf.
 
 ## Implementation
 
+In accordance to the project subject printf is compiled using a makefile into libftprintf.a for further use.
+
 This printf is partially implemented and only checks for the following cases :
   
 <b>
